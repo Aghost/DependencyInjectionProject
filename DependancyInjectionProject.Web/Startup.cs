@@ -40,11 +40,12 @@ namespace DependancyInjectionProject.Web
                     opts.UseNpgsql(Configuration.GetConnectionString("DependancyInjectionProject"));
             });
 
-            // transient = dispose of data between subsequent requests
-            // scoped = lifetime of entire http request
-            // singleton = only 1 instance will be used
-            services.AddTransient<IMovieService, MovieService>();
-            services.AddTransient<ICalculatePiService, CalculatePiService>();
+            // Transient = dispose of data between subsequent requests
+            // Scoped = lifetime of entire http request
+            // Singleton = only 1 instance will be used
+            services.AddScoped<IMovieService, MovieService>();
+            services.AddSingleton<ICalculatePiService, CalculatePiService>();
+
             /*
             services.AddSwaggerGen(c =>
             {
@@ -54,10 +55,8 @@ namespace DependancyInjectionProject.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+            if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
                 //app.UseSwagger();
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DependancyInjectionProject.Web v1"));
