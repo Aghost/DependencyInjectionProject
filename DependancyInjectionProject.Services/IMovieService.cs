@@ -4,9 +4,10 @@ using DependancyInjectionProject.Data.Models;
 
 namespace DependancyInjectionProject.Services {
     public interface IMovieService {
-        public List<Movie> GetAllMovies();
-        public Movie GetMovie(int Id);
-        public void AddMovie(Movie movie);
-        public void DeleteMovie(int Id);
+        public List<Movie> GetAll();
+        public Movie Get(int Id);
+        public Movie Get(string Name);
+        public void Add(Movie movie);
+        public void Delete(int Id);
     }
 }

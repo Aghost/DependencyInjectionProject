@@ -3,9 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using DependancyInjectionProject.Data;
 using DependancyInjectionProject.Data.Models;
-// Id
-// Name
-// Data
+
 namespace DependancyInjectionProject.Data.Models {
     public class Movie {
         public int Id { get; set; }

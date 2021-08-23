@@ -43,12 +43,11 @@ namespace DependancyInjectionProject.Web
             // Transient = dispose of data between subsequent requests
             // Scoped = lifetime of entire http request
             // Singleton = only 1 instance will be used
-            services.AddScoped<IMovieService, MovieService>();
+            services.AddTransient<IMovieService, MovieService>(); //Transient?
             services.AddSingleton<ICalculatePiService, CalculatePiService>();
 
             /*
-            services.AddSwaggerGen(c =>
-            {
+            services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DependancyInjectionProject.Web", Version = "v1" });
             });
             */
@@ -65,7 +64,6 @@ namespace DependancyInjectionProject.Web
             //TODO if (env. is not development)
             //  app.UseHttpsRedirection();
 
-            // TODO ADD NEW:
             // app.UseStaticFiles();
             app.UseRouting();
 
@@ -84,7 +82,6 @@ namespace DependancyInjectionProject.Web
 
             app.UseEndpoints(endpoints =>
             {
-                // TODO ADD NEW:
                 //endpoints.MapControllersRoute(name: "default", pattern: "{controller=Home}/action=Index}/{id?}");
                 endpoints.MapControllers();
             });

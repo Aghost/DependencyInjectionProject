@@ -16,16 +16,18 @@ namespace DependancyInjectionProject.Web.Controllers
         }
 
         [HttpGet("/api/Movies")]
-        public ActionResult GetAllMovies() {
-            var movies = _movieService.GetAllMovies();
-            return Ok(movies);
+        public IActionResult GetAll() {
+            return Ok(_movieService.GetAll());
         }
 
-        [HttpGet("/api/Movies/{id}")]
-        public ActionResult GetMovies(int id) {
-            var movies = _movieService.GetMovie(id);
-            return Ok(movies);
+        [HttpGet("/api/Movies/{name}")]
+        public IActionResult Get(string name) {
+            return Ok(_movieService.Get(name));
         }
 
+        [HttpGet("/api/Movies/{id:int}")]
+        public IActionResult Get(int id) {
+            return Ok(_movieService.Get(id));
+        }
     }
 }

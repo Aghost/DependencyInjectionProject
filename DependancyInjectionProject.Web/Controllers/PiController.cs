@@ -14,6 +14,7 @@ namespace DependancyInjectionProject.Controllers
             this.calculatePiService = calculatePiService;
         }
 
+        /*
         [HttpGet]
         [Route("add/{number}")]
         public IActionResult Add(int number) {
@@ -21,13 +22,17 @@ namespace DependancyInjectionProject.Controllers
                 result = (calculatePiService.Add(number))
             });
         }
+        */
+        [HttpGet]
+        [Route("add/{number}")]
+        public IActionResult Add(int number) {
+            return Ok(calculatePiService.Add(number));
+        }
 
         [HttpGet]
         [Route("minus/{number}")]
         public IActionResult Minus(int number) {
-            return Ok(new {
-                result = (calculatePiService.Minus(number))
-            });
+            return Ok(calculatePiService.Minus(number));
         }
     }
 }
